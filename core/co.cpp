@@ -35,11 +35,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <QXmlStreamReader>
 #include <QXmlStreamWriter>
 #include <QDebug>
+#include <QDir>
 
 CO::CO(QObject *parent) :
     QObject(parent)
 {
+    #ifdef __linux__
+    QDir().mkdir(QDir::homePath() + "/.Component-Organizer");
+    QDir().mkdir(QDir::homePath() + "/.Component-Organizer/fakeplace");
+    m_dirPath = QDir::homePath() + "/.Component-Organizer/fakeplace";
+    #else
     m_dirPath = QApplication::applicationDirPath();
+    #endif
 }
 
 void CO::useDefaultData()

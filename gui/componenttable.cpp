@@ -219,8 +219,7 @@ void ComponentTable::viewDatasheetHandler()
     {
         Datasheet *d = link->defaultDatasheet();
         QString filePath = d->path();
-        QString fullPath = QApplication::applicationDirPath() +
-                CO_DATASHEET_PATH + filePath;
+        QString fullPath = m_co->dirPath() + CO_DATASHEET_PATH + filePath;
 
         m_co->execFile(fullPath);
     }
