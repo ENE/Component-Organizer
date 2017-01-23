@@ -46,6 +46,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    loadLanguage();
 
     co = new CO(this);
     if(!co->readXML(co->dirPath() + CO_XML_PATH))
@@ -324,6 +325,15 @@ void MainWindow::secondaryLabelChangedHandler()
     sortyBySelectedLabels();
 }
 
+void MainWindow::loadLanguage()
+{
+    if(m_translator.load(QLocale::system().name() + ".qm", ":/ts/"))
+    {
+        qApp->installTranslator(&m_translator);
+        ui->retranslateUi(this);
+    }
+}
+
 void MainWindow::sortyBySelectedLabels()
 {
     QString pLabelName = ui->primaryLabel_comboBox->currentText();
@@ -399,15 +409,15 @@ void MainWindow::about()
     QString text;
 
     text.append("Component Organizer " + CO_VERSION);
-    text.append("\nBuilt with Qt " + QString(QT_VERSION_STR) + " ");
+    text.append("\n" + tr("Built with Qt ") + QString(QT_VERSION_STR) + " ");
     text.append("(" + QDateTime::currentDateTime().toString("dd/MM/yyyy") + ")");
     text.append("\n");
-    text.append("\nThis is OPEN SOURCE software as defined by the GPLv3 (or later). Feel free to contribute!");
+    text.append("\n" + tr("This is OPEN SOURCE software as defined by the GPLv3 (or later). Feel free to contribute!"));
     text.append("\n");
-    text.append("\n3xbla.wordpress.com/component-organizer/");
-    text.append("\ngithub.com/3xdigital/Component-Organizer");
+    text.append("\n" + tr("3xbla.wordpress.com/component-organizer/"));
+    text.append("\n" + tr("github.com/3xdigital/Component-Organizer"));
 
-    QMessageBox::about(this, "About", text);
+    QMessageBox::about(this, tr("About"), text);
 }
 
 void MainWindow::closeEvent(QCloseEvent *)

@@ -20,6 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QTranslator>
 
 class CO;
 class Component;
@@ -80,6 +81,9 @@ private:
 
     Settings m_settings;
 
+    QTranslator m_translator;
+
+    void loadLanguage();
     void sortyBySelectedLabels();
     void readSettings();
     void updateXML();

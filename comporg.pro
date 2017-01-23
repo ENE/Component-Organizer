@@ -82,6 +82,8 @@ FORMS    += gui/mainwindow.ui \
     gui/optionsdialog.ui \
     gui/applicationnotedialog.ui
 
+TRANSLATIONS =  ts/pt_BR.ts
+
 OBJECTS_DIR =   _build/tmp/obj
 MOC_DIR =       _build/tmp/moc
 RCC_DIR =       _build/tmp/rcc
@@ -95,7 +97,8 @@ CONFIG(debug, debug|release) {
 
 
 RESOURCES += \
-    resources/img.qrc
+    resources/img.qrc \
+    ts.qrc
 
 OTHER_FILES += \
     resources/app.rc

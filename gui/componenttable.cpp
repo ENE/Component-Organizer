@@ -149,9 +149,9 @@ void ComponentTable::fillRow(int row, Component *component)
         link = component;
 
     if(link->defaultDatasheet() == 0)
-        viewButton->setText("n/a");
+        viewButton->setText(tr("n/a"));
     else
-        viewButton->setText("view");
+        viewButton->setText(tr("view"));
 
     viewButton->setNumber(row);
     connect(viewButton, SIGNAL(pressed()), this, SLOT(updateSelectedRowFromToolButton()));
@@ -159,7 +159,7 @@ void ComponentTable::fillRow(int row, Component *component)
 
     QTableWidgetItem *stock;
     if(component->ignoreStock())
-        stock = new QTableWidgetItem("---");
+        stock = new QTableWidgetItem(tr("---"));
     else
         stock = new QTableWidgetItem(QString::number(component->totalStock()));
     stock->setTextAlignment(Qt::AlignCenter);

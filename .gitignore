@@ -5,3 +5,4 @@ object_script.*
 *.pro.user
 .qmake.stash
 translog.*.log
+ts/*.qm
